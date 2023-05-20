@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ box-sizing: border-box;
+ -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+input::placeholder,
+button,
+a {
+ background: transparent;
+ font-family: inherit;
+ text-decoration: none;
+ color: inherit;
+ outline: none;
+ -webkit-tap-highlight-color: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+button,
+a {
+ cursor: pointer;
+}
+
+button:disabled {
+ cursor: auto;
+}
+
+input:active,
+input:focus,
+select:active,
+select:focus,
+button:active,
+button:focus,
+a:active,
+a:focus {
+ outline: none;
+ -webkit-tap-highlight-color: transparent;
+}
+
+body {
+ font-family: 'Quicksand', sans-serif;
+ font-size: 15px;
+ font-display: fallback;
+ min-height: 100vh;
+ overflow-x: hidden;
+ position: relative;
+ background: #fff;
+ color: #222;
+}
+
+img {
+ width: 100%;
+ height: auto;
+}
+
+.icon {
+ pointer-events: none;
+}
+
+.game {
+  display: block;
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+:where(.game, .start).hidden {
+  display: none;
+}
+
+.start__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.start__header h1 {
+  font-family: 'Lilita One', sans-serif;
+  text-transform: uppercase;
+  font-size: 2.4rem;
+}
+
+.header__icon {
+  position: relative;
+  width: 55px;
+  aspect-ratio: 1 / 1;
+}
+
+.header__icon .card {
+  position: absolute;
+  opacity: 1;
+  top: 0;
+  transform-origin: center bottom;
+}
+
+.header__icon .card:first-child {
+  transform: rotate(25deg);
+}
+
+.control {
+  margin-block: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control label {
+  font-weight: 600;
+}
+
+.control__input, .control__button {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  width: 25%;
+  border-radius: 100vmax;
+  font-weight: 600;
+  padding: 0.3rem 0.1rem;
+}
+
+.control__button {
+  background: rgb(204, 53, 53);
+  transition: all 0.15s;
+}
+
+.instruction h2 {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.instruction p {
+  margin-block: 0.6rem;
+}
+
+.trick-color {
+  z-index: 10;
+  position: absolute;
+  inset: 0.5rem 0.5rem auto auto;
+  width: 35px;
+  height: 35px;
+  border-radius: 100vmax;
+  color: #fff;
+  text-align: center;
+  line-height: 34px;
+  font-size: 1.2rem;
+}
+
+.trick-color.red {
+  background: rgb(204, 53, 53);
+}
+
+.trick-color.black {
+  background: #222;
+}
+
+.player {
+  position: absolute;
+  padding: 0.4rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player header {
+  text-align: center;
+}
+
+.player header .icon {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.player header h3 {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+:where(.player, .user) .points {
+  font-weight: 800;
+  color: #fff;
+  background: rgb(50, 50, 50);
+  padding: 0.5rem;
+  border-radius: 100vmax;
+}
+
+.player-1 {
+  inset: 50% auto auto 0;
+  transform: translateY(-150%);
+}
+
+.player-2 {
+  inset: 0 auto auto 50%;
+  transform: translateX(-50%);
+}
+
+.player-3 {
+  inset: 50% 0 auto auto;
+  transform: translateY(-150%);
+}
+
+.player-0 {
+  position: absolute;
+  inset: auto auto 0 auto;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user .points {
+  margin-block: 0.5rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+.card {
+  color: #fff;
+  width: 11%;
+  min-width: 35px;
+  padding: 0.2rem 0.3rem;
+  aspect-ratio: 1 / 1.5;
+  border-radius: 0.2rem;
+  font-weight: 800;
+  box-shadow: 0px 8px 12px -5px rgba(0, 0, 0, 0.2);
+
+  opacity: 0.95;
+  pointer-events: none;
+  cursor: auto;
+
+  transition: all 0.2s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card div {
+  font-size: 1.2rem;
+  align-self: flex-end;
+  pointer-events: none;
+}
+
+.card p {
+  align-self: flex-start;
+  pointer-events: none;
+}
+
+.card.black {
+  background: #222;
+}
+
+.card.red {
+  background: rgb(204, 53, 53);
+}
+
+.card.active {
+  opacity: 0.95;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.card.fade {
+  opacity: 0;
+  scale: 0;
+}
+
+@media (hover: hover){
+  .card.active:hover {
+    opacity: 1;
+    transform: scale(1.05) translateY(-3%);
+  }
+  
+  .control__button:hover {
+    background: rgb(194, 43, 43);
+    box-shadow: 0px 10px 15px -5px rgba(0,0,0,0.1);
+  }
+}
+
+.card.blocked {
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: auto;
+}
+
+.trick {
+  width: 50%;
+  max-width: 300px;
+  height: 30%;
+  min-height: 130px;
+  
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card-trick {
+  transition: all .2s linear;
+  width: 40px;
+  position: absolute;
+  scale: 0;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  cursor: auto;
+}
+
+.card-player-0, .trick.win-0 .card.card-trick {
+  inset: auto auto 5% 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.card-player-1, .trick.win-1 .card.card-trick {
+  inset: 50% auto auto 5%;
+  transform: translateY(-50%) rotate(5deg);
+}
+
+.card-player-2, .trick.win-2 .card.card-trick  {
+  inset: 5% auto auto 50%;
+  transform: translateX(-50%) rotate(-7deg);
+}
+
+.card-player-3, .trick.win-3 .card.card-trick  {
+  inset: 50% 5% auto auto;
+  transform: translateY(-50%) rotate(10deg);
+}
+
+.trick.win-0 .card-player-0 {
+  z-index: 5;
+}
+
+.trick.win-1 .card-player-1 {
+  z-index: 5;
+}
+
+.trick.win-2 .card-player-2 {
+  z-index: 5;
+}
+
+.trick.win-3 .card-player-3 {
+  z-index: 5;
+}
+
+
+
+.card-trick.animate {
+  scale: 1;
+  opacity: 1;
+}
+
+.modal {
+  outline: none;
+  inset: 0;
+  margin: auto;
+  position: fixed;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.2);
+}
+
+.modal h3 {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.modal__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.modal ul {
+  list-style: none;
+  text-align: left;
+}
+
+.modal li {
+  margin-block: 0.2rem;
+}
+
+.modal li span {
+  font-weight: 600;
+}
+
+.modal__cards .card {
+  width: 15%;
+}
+
+.pass__btn, .back__btn {
+  margin-top: 1.3rem;
+  background: #333;
+  color: #fff;
+  border-radius: 100vmax;
+  padding: 0.7rem 1.2rem;
+  font-weight: 500;
+}
+
+.pass__btn:disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.modal::backdrop {
+  background: rgba(120, 120, 120, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal .card.selected {
+  transform: scale(1.15) translateY(-5%);
+  box-shadow: 0px 0px 9px rgba(0,0,0,0.4);
+  opacity: 1;
+}
+
+.modal.cards--blocked .card:not(.selected){
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: auto;
+}
+
+@media screen and (min-width: 360px){
+  .player-1 {
+    transform: translateY(-110%);
+  }
+  
+  .player-3 {
+    transform: translateY(-110%);
+  }
+
+  .trick {
+    top: 29%;
+  }
+}
+
+@media screen and (min-width: 467px){
+  .card {
+    width: 50px;
+    font-size: 1.1rem;
+  }
+
+  .start__header {
+    justify-content: flex-start;
+    gap: 1.2rem;
+  }
+
+  .start__header h1 {
+    font-size: 3.3rem;
+  }
+  
+  .header__icon {
+    width: 70px;
+    transform: rotate(-15deg);
+  }
+  
+  .header__icon .card {
+    position: absolute;
+    width: 40px;
+    font-size: 1rem;
+    opacity: 1;
+    top: 0;
+    transform-origin: center bottom;
+  }
+  
+  
+  .control__input, .control__button {
+    width: 15%;
+    padding: 0.4rem 0.2rem;
+  }
+  
+  .instruction p {
+    padding-right: 10%;
+  }
+}
+
+
+@media screen and (max-height: 560px){
+  .card-player-0, .card-trick.win-0 {
+    bottom: 5%;
+    left: 40%;
+    transform: translateX(-50%) rotate(-2deg);
+    transition: all 0.2s;
+  }
+  
+  .card-player-1, .card-trick.win-1 {
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%) rotate(5deg);
+  }
+  
+  .card-player-2, .card-trick.win-2 {
+    top: 5%;
+    left: 60%;
+    transform: translateX(-50%) rotate(-7deg);
+  }
+  
+  .card-player-3, .card-trick.win-3 {
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%) rotate(10deg);
+  }
+  
+}
+
+@media screen and (min-width: 576px){
+  .card {
+    width: 50px;
+    padding: 0.1rem 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  .card div {
+    font-size: 1.5rem;
+  }
+
+  .trick-color {
+    font-size: 1.5rem;
+  }
+
+  .modal {
+    max-width: 540px;
+  }
+
+  .modal__cards {
+    gap: 0.8rem;
+  }
+
+  .modal .card {
+    width: 55px;
+  }
+
+  .modal .card.selected {
+    transform: scale(1.2) translateY(0%);
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.4);
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .start {
+    padding: 3rem;
+  }
+
+  .start__header {
+    gap: 2rem;
+  }
+
+  .start__header h1 {
+    font-size: 4.5rem;
+  }
+  
+  .control {
+    width: 40vw;
+  }
+
+  .instruction {
+    width: 60vw;
+  }
+  
+  .player {
+    margin: 1rem;
+  }
+
+  .player header .icon {
+    font-size: 2.5rem;
+    color: #09080a;
+  }
+
+  .card, .card-trick {
+    width: 60px;
+    border-radius: 0.3rem;
+  }
+
+  .card div {
+    font-size: 2rem;
+  }
+
+  .trick {
+    max-width: 350px;
+    height: 35%;
+  }
+
+  .player header h3 {
+    font-size: 1rem;
+    line-height: 2;
+  }
+
+  .trick-color {
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    font-size: 2rem;
+  }
+}
+
+
+@media screen and (min-width: 600px) and (max-height: 430px){
+  .cards .card {
+    width: 42px;
+  }
+}

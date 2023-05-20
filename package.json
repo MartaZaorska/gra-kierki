@@ -1,0 +1,34 @@
+{
+  "name": "Kierki",
+  "version": "1.0.0",
+  "repository": {
+    "url": "git+https://github.com/MartaZaorska/gra-kierki.git"
+  },
+  "description": "Gra Kierki",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "keywords": [
+    "gra",
+    "kierki"
+  ],
+  "author": "Marta Zaorska",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "gh-pages": "^5.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2",
+    "workbox-webpack-plugin": "^6.5.4"
+  }
+}
