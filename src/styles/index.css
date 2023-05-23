@@ -434,9 +434,10 @@ img {
 }
 
 .modal::backdrop {
-  background: rgba(120, 120, 120, 0.1);
+  background: rgba(80, 80, 80, 0.3);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  -moz-backdrop-filter: blur(6px);
 }
 
 .modal .card.selected {
