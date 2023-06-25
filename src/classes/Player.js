@@ -26,7 +26,7 @@ function sortCardsByWorth(cards){
   tmp[0].sort((a, b) => {
     if(b.color === a.color) return b.points === a.points ? valueIndex(b) - valueIndex(a) : b.points - a.points;
     const tmp = a.color === "♠" ? a : b;
-    return valueIndex(tmp) >= 10 ? 1 : b.points - a.points;
+    return valueIndex(tmp) >= 10 ? 1 : -1;
   });
 
   tmp[1].sort((a, b) => valueIndex(b) - valueIndex(a));
